@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="fr.lui.neogames.controllers.employe.EmployeController">
+
+    <!-- ===== Top Bar ===== -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #34495e;">
+            <Label fx:id="lblStoreName" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Nom du magasin: NeoGames" />
+            <Label fx:id="lblEmployeeName" style="-fx-text-fill: white; -fx-font-size: 14px;" text="Employé: -" />
+
+            <!-- Region pour pousser à droite -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Label fx:id="lblEmployeRole" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Rôle: -" />
+        </HBox>
+    </top>
+
+    <!-- ===== Left Menu ===== -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-min-width: 200;">
+            <Label text="Espace Employé" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Separator />
+
+            <!-- Menu Vendeur -->
+            <VBox fx:id="menuVendeur" spacing="5" visible="false" managed="false">
+                <Label text="💼 Vendeur" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2980b9;" />
+                <Button fx:id="btnVente" maxWidth="Infinity" onAction="#showVente" text="Vendre" />
+                <Button fx:id="btnClientsVendeur" maxWidth="Infinity" onAction="#showClients" text="Clients" />
+                <Separator />
+            </VBox>
+
+            <!-- Menu Préparateur -->
+            <VBox fx:id="menuPreparateur" spacing="5" visible="false" managed="false">
+                <Label text="📦 Préparateur" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+                <Button fx:id="btnStock" maxWidth="Infinity" onAction="#showStock" text="Gérer le stock" />
+                <Button fx:id="btnAjouterJeu" maxWidth="Infinity" onAction="#showAjouterJeu" text="Ajouter un jeu" />
+                <Separator />
+            </VBox>
+
+            <!-- Menu Gérant -->
+            <VBox fx:id="menuGerant" spacing="5" visible="false" managed="false">
+                <Label text="👔 Gérant" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
+                <Button fx:id="btnBenefices" maxWidth="Infinity" onAction="#showBenefices" text="Bénéfices" />
+                <Button fx:id="btnStatistiques" maxWidth="Infinity" onAction="#showStatistiques" text="Statistiques" />
+                <Separator />
+            </VBox>
+
+            <!-- Region pour pousser le contenu en bas -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <Button fx:id="btnRetourInterfaceRole" maxWidth="Infinity" onAction="#showViewRole" text="Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- ===== Center Content ===== -->
+    <center>
+        <StackPane fx:id="centerPane" style="-fx-background-color: #ffffff;">
+            <VBox alignment="CENTER" spacing="20" style="-fx-padding: 40;">
+                <Label text="Bienvenue dans l'espace employé" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                <Label text="Sélectionnez votre rôle pour commencer" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+            </VBox>
+        </StackPane>
+    </center>
+
+    <!-- ===== Bottom Bar ===== -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+            <Label style="-fx-font-size: 14px; -fx-text-fill: white" text="Sélectionner le rôle :" />
+            <ComboBox fx:id="comboRole" prefWidth="200" promptText="Choisissez un rôle" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

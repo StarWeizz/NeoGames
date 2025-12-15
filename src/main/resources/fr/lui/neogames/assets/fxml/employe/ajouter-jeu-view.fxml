@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.employe.AjouterJeuController"
+      spacing="15" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="➕ Ajouter un Nouveau Jeu" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <VBox spacing="15" style="-fx-padding: 10;">
+
+            <!-- Type de jeu -->
+            <VBox spacing="5">
+                <Label text="Type de jeu *" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="comboTypeJeu" prefWidth="300" promptText="Sélectionnez le type">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="PC" />
+                            <String fx:value="Console" />
+                            <String fx:value="Rétro" />
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <!-- Nom -->
+            <VBox spacing="5">
+                <Label text="Nom *" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtNom" promptText="Nom du jeu" />
+            </VBox>
+
+            <!-- Éditeur -->
+            <VBox spacing="5">
+                <Label text="Éditeur *" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtEditeur" promptText="Nom de l'éditeur" />
+            </VBox>
+
+            <!-- Prix -->
+            <VBox spacing="5">
+                <Label text="Prix *" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtPrix" promptText="Prix (ex: 59.99)" />
+            </VBox>
+
+            <!-- Genre -->
+            <VBox spacing="5">
+                <Label text="Genre *" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="comboGenre" prefWidth="300" promptText="Sélectionnez le genre">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="ACTION" />
+                            <String fx:value="AVENTURE" />
+                            <String fx:value="RPG" />
+                            <String fx:value="FPS" />
+                            <String fx:value="SPORT" />
+                            <String fx:value="COURSE" />
+                            <String fx:value="PLATEFORME" />
+                            <String fx:value="COMBAT" />
+                            <String fx:value="HORREUR" />
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <!-- Stock -->
+            <VBox spacing="5">
+                <Label text="Stock initial *" style="-fx-font-weight: bold;" />
+                <Spinner fx:id="spinnerStock" initialValue="10" min="0" max="999" prefWidth="150" editable="true" />
+            </VBox>
+
+            <!-- Occasion -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <CheckBox fx:id="checkOccasion" text="Jeu d'occasion" />
+            </HBox>
+
+            <!-- Champs spécifiques PC -->
+            <VBox fx:id="champsPc" spacing="10" visible="false" managed="false">
+                <Label text="Informations PC" style="-fx-font-weight: bold; -fx-text-fill: #2980b9;" />
+                <TextField fx:id="txtConfigMin" promptText="Configuration minimale" />
+                <TextField fx:id="txtConfigRecommandee" promptText="Configuration recommandée" />
+                <TextField fx:id="txtPlateforme" promptText="Plateforme (Steam, Epic, GOG...)" />
+            </VBox>
+
+            <!-- Champs spécifiques Console -->
+            <VBox fx:id="champsConsole" spacing="10" visible="false" managed="false">
+                <Label text="Informations Console" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+                <ComboBox fx:id="comboPlateforme" prefWidth="300" promptText="Sélectionnez la plateforme">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="PLAYSTATION_5" />
+                            <String fx:value="XBOX_SERIES" />
+                            <String fx:value="NINTENDO_SWITCH" />
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+                <HBox spacing="10">
+                    <CheckBox fx:id="checkMultijoueur" text="Multijoueur local" />
+                    <CheckBox fx:id="checkLigneObligatoire" text="Connexion en ligne obligatoire" />
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Joueurs max:" />
+                    <Spinner fx:id="spinnerJoueursMax" initialValue="1" min="1" max="64" prefWidth="100" editable="true" />
+                </HBox>
+            </VBox>
+
+            <!-- Boutons -->
+            <HBox spacing="10" alignment="CENTER" style="-fx-padding-top: 20;">
+                <Button text="✅ Ajouter le jeu" onAction="#ajouterJeu"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                <Button text="🔄 Réinitialiser" onAction="#reinitialiser"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>

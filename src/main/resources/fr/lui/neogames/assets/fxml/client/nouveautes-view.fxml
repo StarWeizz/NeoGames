@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.NouveautesController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Nouveautés ✨" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- Info -->
+    <Label text="Découvrez les derniers jeux ajoutés à notre catalogue !"
+           style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+
+    <!-- TableView des nouveautés -->
+    <TableView fx:id="tableNouveautes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="200" />
+            <TableColumn fx:id="colEditeur" text="Éditeur" prefWidth="120" />
+            <TableColumn fx:id="colPlateforme" text="Plateforme" prefWidth="100" />
+            <TableColumn fx:id="colGenre" text="Genre" prefWidth="100" />
+            <TableColumn fx:id="colPrix" text="Prix" prefWidth="100" />
+        </columns>
+    </TableView>
+
+</VBox>

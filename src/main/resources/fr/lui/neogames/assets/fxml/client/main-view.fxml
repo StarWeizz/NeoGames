@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="fr.lui.neogames.controllers.client.ClientController">
+
+    <!-- ===== Top Bars ===== -->
+    <top>
+        <VBox>
+            <!-- Top Bar 1 : Magasin -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #34495e;">
+                <Label fx:id="lblStoreName" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Nom du magasin: NeoGames" />
+                <Button onAction="#showArticles" text="Articles" />
+                <Button onAction="#showPromotions" text="Promotions" />
+                <Button onAction="#showNouveautes" text="Nouveautés" />
+            </HBox>
+
+        </VBox>
+    </top>
+
+    <!-- ===== Left Menu ===== -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-min-width: 200;">
+            <Label text="Espace client" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Separator />
+            <Button fx:id="btnCommandes" maxWidth="Infinity" onAction="#showCommandes" text="Mes commandes" />
+            <Button fx:id="btnInfos" maxWidth="Infinity" onAction="#showInfos" text="Mes informations" />
+            <Button fx:id="btnPanier" maxWidth="Infinity" onAction="#showPanier" text="Mon panier" />
+            <Button fx:id="btnFidelite" maxWidth="Infinity" onAction="#showFidelity" text="Ma fidélité" />
+
+            <!-- Region pour pousser le contenu en bas -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <Button fx:id="btnRetourInterfaceRole" maxWidth="Infinity" onAction="#showViewRole" text="Déconnexion" />
+        </VBox>
+    </left>
+
+    <!-- ===== Center Content ===== -->
+    <center>
+        <StackPane fx:id="centerPane" prefHeight="257.0" prefWidth="530.0" style="-fx-background-color: #ffffff;" />
+    </center>
+
+    <!-- ===== Right content ===== -->
+    <right>
+        <VBox fx:id="rightPanel" spacing="10" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-min-width: 250" >
+            <Label text="Détails de l'article" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Separator />
+
+            <Label fx:id="lblDetailNom" text="Nom: -" wrapText="true" />
+            <Label fx:id="lblDetailEditeur" text="Éditeur: -" wrapText="true" />
+            <Label fx:id="lblDetailPrix" text="Prix: -" />
+            <Label fx:id="lblDetailPlateforme" text="Plateforme: -" wrapText="true" />
+            <Label fx:id="lblDetailGenre" text="Genre: -" wrapText="true" />
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Quantité:" />
+                <Spinner fx:id="spinnerQuantite" initialValue="1" min="1" max="99"
+                         prefWidth="80" editable="true" />
+            </HBox>
+
+            <Separator />
+
+            <Button fx:id="btnAjouterPanier" text="Mettre dans le panier" maxWidth="Infinity"
+                    disable="true" onAction="#ajouterAuPanier"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white;" />
+
+
+        </VBox>
+    </right>
+
+    <bottom>
+        <!-- Bottom Bar : Client -->
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+            <Label style="-fx-font-size: 14px; -fx-text-fill: white" text="Client sélectionné :" />
+            <!-- Sélection du client -->
+            <ComboBox fx:id="comboClients" prefWidth="200" promptText="Sélectionnez un client" />
+
+            <!-- Region pour pousser le solde à droite -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Solde -->
+            <Label fx:id="lblClientBalance" style="-fx-text-fill: white; -fx-font-size: 14px" text="Solde: 0 €" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

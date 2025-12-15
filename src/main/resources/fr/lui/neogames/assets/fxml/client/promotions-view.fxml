@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.PromotionsController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Promotions 🔥" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- Info -->
+    <Label text="Profitez de nos offres exceptionnelles !"
+           style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+
+    <!-- TableView des promotions -->
+    <TableView fx:id="tablePromotions" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="200" />
+            <TableColumn fx:id="colEditeur" text="Éditeur" prefWidth="120" />
+            <TableColumn fx:id="colPrixOriginal" text="Prix original" prefWidth="100" />
+            <TableColumn fx:id="colReduction" text="Réduction" prefWidth="100" />
+            <TableColumn fx:id="colPrixPromo" text="Prix promo" prefWidth="100" />
+        </columns>
+    </TableView>
+
+</VBox>

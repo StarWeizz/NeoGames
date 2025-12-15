@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.FideliteController"
+      spacing="15" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Ma Fidélité" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <Separator />
+
+    <!-- Information sur le système de points -->
+    <Label text="10€ dépensés = 1 euro de réduction"
+           style="-fx-font-size: 14px; -fx-padding: 10 0;" />
+
+    <!-- Points actuels -->
+    <Label fx:id="lblPoints" text="Vos points actuels : 0"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <!-- Statut de la carte -->
+    <Label fx:id="lblStatutCarte" text="Carte de fidélité : Non activée"
+           style="-fx-font-size: 14px;" />
+
+    <!-- Bouton commander la carte -->
+    <Button fx:id="btnCommanderCarte" text="Commander la carte de fidélité"
+            onAction="#commanderCarte"
+            style="-fx-font-size: 14px; -fx-padding: 10 20; -fx-background-color: #2196F3; -fx-text-fill: white;" />
+
+</VBox>

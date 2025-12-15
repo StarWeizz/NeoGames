@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.InfosController"
+      spacing="15" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Informations du client" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <Separator />
+
+    <!-- Informations -->
+    <Label fx:id="lblNom" text="Nom: -" style="-fx-font-size: 14px;" />
+    <Label fx:id="lblPrenom" text="Prénom: -" style="-fx-font-size: 14px;" />
+    <Label fx:id="lblSolde" text="Solde: 0 €" style="-fx-font-size: 14px;" />
+    <Label fx:id="lblCarteFidelite" text="Carte de fidélité: Non" style="-fx-font-size: 14px;" />
+    <Label fx:id="lblPointsFidelite" text="Points de fidélité: 0" style="-fx-font-size: 14px;" />
+
+    <Separator />
+
+    <Button fx:id="btnAjouterArgent" text="Créditer le compte de 50€" onAction="#ajouterArgent" />
+</VBox>

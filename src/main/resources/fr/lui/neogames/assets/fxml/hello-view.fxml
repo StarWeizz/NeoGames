@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="40.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fr.lui.neogames.controllers.SelectRoleController"
+      style="-fx-background-color: #ecf0f1;">
+
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
+    </padding>
+
+    <!-- En-tête -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="NeoGames" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <Label text="Système de Gestion de Boutique" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+    </VBox>
+
+    <!-- Sélection du rôle -->
+    <VBox alignment="CENTER" spacing="15" style="-fx-max-width: 400;">
+        <Label text="Sélectionnez votre espace" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #34495e;" />
+
+        <Button text="👤 Espace Client"
+                onAction="#onRoleClientButtonClick"
+                style="-fx-font-size: 18px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 15 40;"
+                maxWidth="Infinity"/>
+
+        <Button text="💼 Espace Employé"
+                onAction="#onRoleEmployeButtonClick"
+                style="-fx-font-size: 18px; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 15 40;"
+                maxWidth="Infinity"/>
+    </VBox>
+
+</VBox>

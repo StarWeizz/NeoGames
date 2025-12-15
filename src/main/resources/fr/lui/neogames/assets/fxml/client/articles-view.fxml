@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.ArticlesController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Catalogue" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- TableView des articles -->
+    <TableView fx:id="tableArticles" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="150" />
+            <TableColumn fx:id="colEditeur" text="Éditeur" prefWidth="120" />
+            <TableColumn fx:id="colPrix" text="Prix" prefWidth="80" />
+            <TableColumn fx:id="colPlateforme" text="Plateforme" prefWidth="100" />
+            <TableColumn fx:id="colGenre" text="Genre" prefWidth="100" />
+        </columns>
+    </TableView>
+
+</VBox>

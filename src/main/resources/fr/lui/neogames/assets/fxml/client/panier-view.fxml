@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.client.PanierController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="Mon Panier" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- TableView du panier -->
+    <TableView fx:id="tablePanier" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="200" />
+            <TableColumn fx:id="colPrixUnitaire" text="Prix unitaire" prefWidth="100" />
+            <TableColumn fx:id="colQuantite" text="Quantité" prefWidth="100" />
+            <TableColumn fx:id="colTotal" text="Total" prefWidth="100" />
+        </columns>
+    </TableView>
+
+    <!-- Total du panier -->
+    <Label fx:id="lblTotal" text="Total du panier: 0.00 €"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <!-- Réduction disponible avec points de fidélité -->
+    <Label fx:id="lblReductionFidelite" text=""
+           style="-fx-font-size: 12px; -fx-text-fill: #2196F3;" />
+
+    <!-- HBox avec code promo et bouton payer -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="txtCodePromo" promptText="Entrez votre code promo" maxWidth="200" />
+        <Button fx:id="btnAppliquerPromo" text="Appliquer le code promo" onAction="#appliquerPromo" />
+
+        <!-- Spacer pour pousser les boutons à droite -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button fx:id="btnViderPanier" text="Vider le panier" onAction="#viderPanier"
+                style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;" />
+
+        <Button fx:id="btnPayer" text="Payer" onAction="#payer"
+                style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;" />
+    </HBox>
+
+    <!-- Séparateur -->
+    <Separator />
+
+</VBox>
