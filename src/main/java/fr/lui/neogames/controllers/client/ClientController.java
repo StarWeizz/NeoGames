@@ -45,11 +45,7 @@ public class ClientController {
 
 
 
-    private ObservableList<Client> clients = FXCollections.observableArrayList(
-            new Client("John", "Doe"),
-            new Client("Jane", "Smith"),
-            new Client("Alice", "Martin", 3748.32)
-    );
+    private ObservableList<Client> clients = FXCollections.observableArrayList(MainApp.getMagasin().getClients());
 
     @FXML
     public void initialize(){
@@ -77,9 +73,9 @@ public class ClientController {
 
         comboClients.getSelectionModel().selectedItemProperty().addListener((obs, oldClient, newClient) -> {
             if (newClient != null) {
-                lblClientBalance.setText(String.format("Solde: %.2f €", newClient.getSolde()));
+                lblClientBalance.setText(String.format("Solde : %.2f €", newClient.getSolde()));
             } else {
-                lblClientBalance.setText("Solde: 0.00 €");
+                lblClientBalance.setText("Solde : 0.00 €");
             }
         });
 
@@ -146,10 +142,12 @@ public class ClientController {
     }
 
     public void afficherDetailsJeu(Jeu jeu) {
+        double prixJeu = jeu.estEnPromotion() ? jeu.getPrixAvecPromo(jeu.getPrice()) : jeu.getPrice();
+
         jeuSelectionne = jeu;
         lblDetailNom.setText("Nom: " + jeu.getNom());
         lblDetailEditeur.setText("Éditeur: " + jeu.getEditeur());
-        lblDetailPrix.setText("Prix: " + jeu.getPrice() + " €");
+        lblDetailPrix.setText(String.format("Prix: %.2f €", prixJeu));
         lblDetailPlateforme.setText("Plateforme: " + jeu.getPlateforme());
         lblDetailGenre.setText("Genre: " + jeu.getGenre());
         btnAjouterPanier.setDisable(false);
@@ -205,12 +203,17 @@ public class ClientController {
                     ((InfosController) controller).setClient(clientSelectionne);
                 } else if (controller instanceof PanierController) {
                     ((PanierController) controller).setClient(clientSelectionne);
+                    ((PanierController) controller).setClientController(this);
                 } else if (controller instanceof FideliteController) {
                     ((FideliteController) controller).setClient(clientSelectionne);
                 } else if (controller instanceof CommandesController) {
                     ((CommandesController) controller).setClient(clientSelectionne);
                 } else if (controller instanceof ArticlesController) {
                     ((ArticlesController) controller).setClientController(this);
+                } else if (controller instanceof NouveautesController) {
+                    ((NouveautesController) controller).setClientController(this);
+                } else if (controller instanceof PromotionsController) {
+                    ((PromotionsController) controller).setClientController(this);
                 }
             }
 

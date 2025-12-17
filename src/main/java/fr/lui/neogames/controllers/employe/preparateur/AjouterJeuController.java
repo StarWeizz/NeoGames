@@ -1,6 +1,7 @@
-package fr.lui.neogames.controllers.employe;
+package fr.lui.neogames.controllers.employe.preparateur;
 
 import fr.lui.neogames.MainApp;
+import fr.lui.neogames.controllers.employe.EmployeController;
 import fr.lui.neogames.enums.Genre;
 import fr.lui.neogames.enums.Plateforme;
 import fr.lui.neogames.models.jeu.JeuConsole;

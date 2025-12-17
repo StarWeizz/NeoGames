@@ -64,6 +64,10 @@ public class Magasin {
         this.catalogue.add(jeu);
     }
 
+    public void ajouterClient(Client client) {
+        this.clients.add(client);
+    }
+
     public List<Jeu> getCatalogue() {
         return catalogue;
     }
@@ -82,5 +86,9 @@ public class Magasin {
 
     public List<CodePromo> getCodesPromo() {
         return codesPromo;
+    }
+
+    public List<Client> getClients() {
+        return clients;
     }
 }

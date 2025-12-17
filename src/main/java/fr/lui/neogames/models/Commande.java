@@ -59,6 +59,10 @@ public class Commande {
         return commandes;
     }
 
+    public int getNbCommandes() {
+        return commandes.size();
+    }
+
     public void addCommande(List<Jeu> jeux) {
         double total = jeux.stream().mapToDouble(Jeu::getPrice).sum();
         this.commandes.add(new DetailCommande(jeux, total));

@@ -26,6 +26,8 @@ public class PromotionsController {
     @FXML
     private TableColumn<Jeu, String> colPrixPromo;
 
+    private ClientController clientController;
+
     @FXML
     public void initialize() {
         // Configurer les colonnes
@@ -50,5 +52,16 @@ public class PromotionsController {
                 .collect(Collectors.toList());
 
         tablePromotions.setItems(FXCollections.observableArrayList(jeuxEnPromo));
+
+        // Gérer la sélection d'un jeu
+        tablePromotions.getSelectionModel().selectedItemProperty().addListener((obs, oldJeu, newJeu) -> {
+            if (newJeu != null && clientController != null) {
+                clientController.afficherDetailsJeu(newJeu);
+            }
+        });
+    }
+
+    public void setClientController(ClientController clientController) {
+        this.clientController = clientController;
     }
 }

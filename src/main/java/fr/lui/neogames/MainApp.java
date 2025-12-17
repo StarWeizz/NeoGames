@@ -27,7 +27,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
 
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("assets/img/logo.png")).openStream()));
-        primaryStage.setTitle("Micromania - Gestion de Boutique");
+        primaryStage.setTitle("NeoGames - Gestion de Boutique");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(500);
         primaryStage.setMinHeight(300);

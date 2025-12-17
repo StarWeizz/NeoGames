@@ -24,6 +24,8 @@ public class ArticlesController {
     private TableColumn<Jeu, String> colPlateforme;
     @FXML
     private TableColumn<Jeu, String> colGenre;
+    @FXML
+    private  TableColumn<Jeu, String> colPromotion;
 
     private ClientController clientController;
 
@@ -42,6 +44,11 @@ public class ArticlesController {
         colGenre.setCellValueFactory(cellData -> {
             Genre g = cellData.getValue().getGenre();
             return new SimpleStringProperty(g != null ? g.toString() : "");
+        });
+
+        colPromotion.setCellValueFactory(cellData -> {
+            boolean p = cellData.getValue().estEnPromotion();
+            return new SimpleStringProperty(p ? "Oui" : "Non");
         });
 
         // Charger les jeux du catalogue

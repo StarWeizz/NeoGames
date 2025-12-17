@@ -2,6 +2,7 @@ package fr.lui.neogames;
 
 import fr.lui.neogames.enums.Genre;
 import fr.lui.neogames.enums.Plateforme;
+import fr.lui.neogames.models.Client;
 import fr.lui.neogames.models.Magasin;
 import fr.lui.neogames.models.jeu.JeuConsole;
 import fr.lui.neogames.models.jeu.JeuPC;
@@ -89,5 +90,53 @@ public class DonneesTest {
                 "Intel Core i5, 8GB RAM", "Intel Core i7, 16GB RAM", "Steam");
         jeuPromo6.setReduction(10); // -10%
         magasin.ajouterJeu(jeuPromo6);
+
+        // Ajouter des clients de test
+        Client client1 = new Client("Dupont", "Jean", 150.00);
+        client1.setCarteFidelite(true);
+        client1.setPointsFidelite(25.50);
+        magasin.ajouterClient(client1);
+
+        Client client2 = new Client("Martin", "Sophie", 320.75);
+        client2.setCarteFidelite(true);
+        client2.setPointsFidelite(45.20);
+        magasin.ajouterClient(client2);
+
+        Client client3 = new Client("Durand", "Pierre", 85.00);
+        client3.setCarteFidelite(false);
+        magasin.ajouterClient(client3);
+
+        Client client4 = new Client("Leroy", "Marie", 500.00);
+        client4.setCarteFidelite(true);
+        client4.setPointsFidelite(78.90);
+        magasin.ajouterClient(client4);
+
+        Client client5 = new Client("Bernard", "Luc", 200.50);
+        client5.setCarteFidelite(false);
+        magasin.ajouterClient(client5);
+
+        Client client6 = new Client("Petit", "Emma", 450.25);
+        client6.setCarteFidelite(true);
+        client6.setPointsFidelite(120.00);
+        magasin.ajouterClient(client6);
+
+        Client client7 = new Client("Moreau", "Thomas", 75.00);
+        client7.setCarteFidelite(false);
+        magasin.ajouterClient(client7);
+
+        Client client8 = new Client("Simon", "Camille", 650.00);
+        client8.setCarteFidelite(true);
+        client8.setPointsFidelite(95.50);
+        magasin.ajouterClient(client8);
+
+        Client client9 = new Client("Laurent", "Nicolas", 120.00);
+        client9.setCarteFidelite(true);
+        client9.setPointsFidelite(15.75);
+        magasin.ajouterClient(client9);
+
+        Client client10 = new Client("Lefebvre", "Julie", 280.00);
+        client10.setCarteFidelite(false);
+        magasin.ajouterClient(client10);
+
     }
 }

@@ -24,6 +24,10 @@ public class NouveautesController {
     private TableColumn<Jeu, String> colGenre;
     @FXML
     private TableColumn<Jeu, String> colPrix;
+    @FXML
+    private TableColumn<Jeu, String> colPromotion;
+
+    private ClientController clientController;
 
     @FXML
     public void initialize() {
@@ -40,9 +44,25 @@ public class NouveautesController {
         colPrix.setCellValueFactory(cellData ->
             new SimpleStringProperty(String.format("%.2f €", cellData.getValue().getPrice())));
 
+        colPromotion.setCellValueFactory(cellData -> {
+            boolean p = cellData.getValue().estEnPromotion();
+            return new SimpleStringProperty(p ? "Oui" : "Non");
+        });
+
         // Afficher tous les jeux du catalogue comme nouveautés
         List<Jeu> nouveautes = MainApp.getMagasin().getCatalogue();
 
         tableNouveautes.setItems(FXCollections.observableArrayList(nouveautes));
+
+        // Gérer la sélection d'un jeu
+        tableNouveautes.getSelectionModel().selectedItemProperty().addListener((obs, oldJeu, newJeu) -> {
+            if (newJeu != null && clientController != null) {
+                clientController.afficherDetailsJeu(newJeu);
+            }
+        });
+    }
+
+    public void setClientController(ClientController clientController) {
+        this.clientController = clientController;
     }
 }

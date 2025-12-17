@@ -1,6 +1,7 @@
-package fr.lui.neogames.controllers.employe;
+package fr.lui.neogames.controllers.employe.vendeur;
 
 import fr.lui.neogames.MainApp;
+import fr.lui.neogames.controllers.employe.EmployeController;
 import fr.lui.neogames.models.Client;
 import fr.lui.neogames.models.jeu.Jeu;
 import javafx.beans.property.SimpleStringProperty;

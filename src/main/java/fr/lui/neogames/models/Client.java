@@ -1,5 +1,7 @@
 package fr.lui.neogames.models;
 
+import javafx.beans.value.ObservableValue;
+
 public class Client {
     private String nom;
     private String prenom;

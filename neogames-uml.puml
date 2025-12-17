@@ -1,0 +1,375 @@
+@startuml NeoGames
+
+!define LIGHTYELLOW #FFFACD
+!define LIGHTBLUE #ADD8E6
+!define LIGHTGREEN #90EE90
+!define LIGHTPINK #FFB6C1
+!define LIGHTGRAY #D3D3D3
+
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam class {
+    BackgroundColor LIGHTYELLOW
+    BorderColor Black
+    ArrowColor Black
+}
+
+' ==================== ENUMS ====================
+package "Enums" <<Rectangle>> LIGHTGRAY {
+    enum Genre {
+        ACTION
+        AVENTURE
+        RPG
+        FPS
+        COMBAT
+        SPORT
+        PLATEFORME
+        COURSE
+        HORREUR
+    }
+
+    enum Plateforme {
+        PC
+        PLAYSTATION_5
+        NINTENDO_SWITCH
+        RETRO_NES
+        RETRO_MEGADRIVE
+        RETRO_SNES
+        XBOX_SERIES
+    }
+}
+
+' ==================== INTERFACES ====================
+package "Interfaces" <<Rectangle>> LIGHTBLUE {
+    interface Promotion {
+        + {abstract} getReduction(): double
+        + {abstract} setReduction(double): void
+        + getPrixAvecPromo(double): double
+        + estEnPromotion(): boolean
+    }
+}
+
+' ==================== MODELS - JEU ====================
+package "Models - Jeu" <<Rectangle>> LIGHTGREEN {
+    class Jeu {
+        - nom: StringProperty
+        - editeur: StringProperty
+        - price: DoubleProperty
+        - genre: ObjectProperty<Genre>
+        - plateforme: ObjectProperty<Plateforme>
+        - stock: IntegerProperty
+        - occasion: BooleanProperty
+        - reduction: DoubleProperty
+        --
+        + Jeu(nom, editeur, price, genre, plateforme, stock)
+        + getNom(): String
+        + getEditeur(): String
+        + getPrice(): double
+        + getGenre(): Genre
+        + getPlateforme(): Plateforme
+        + getStock(): int
+        + isOccasion(): boolean
+        + getReduction(): double
+        + setReduction(double): void
+        + getPrixAvecPromo(double): double
+        + estEnPromotion(): boolean
+        + nomProperty(): StringProperty
+        + priceProperty(): DoubleProperty
+        + stockProperty(): IntegerProperty
+        + occasionProperty(): BooleanProperty
+    }
+
+    class JeuPC {
+        - configMinimale: String
+        - configRecommandee: String
+        - platformeDistribution: String
+        --
+        + JeuPC(nom, editeur, price, genre, stock)
+        + getConfigMinimale(): String
+        + getConfigRecommandee(): String
+        + getPlatformeDistribution(): String
+    }
+
+    class JeuConsole {
+        - modeMultijoueurLocal: boolean
+        - modeMultijoueurEnLigne: boolean
+        - abonnementRequis: boolean
+        - nombreJoueursMax: int
+        --
+        + JeuConsole(nom, editeur, price, genre, plateforme, stock)
+        + isModeMultijoueurLocal(): boolean
+        + isModeMultijoueurEnLigne(): boolean
+        + isAbonnementRequis(): boolean
+        + getNombreJoueursMax(): int
+    }
+
+    class JeuRetro {
+        - annee: int
+        - boiteOriginale: boolean
+        - noticeIncluse: boolean
+        - etatGeneral: String
+        - collector: boolean
+        --
+        + JeuRetro(nom, editeur, price, genre, plateforme, annee, stock)
+        + getAnnee(): int
+        + isBoiteOriginale(): boolean
+        + isNoticeIncluse(): boolean
+        + getEtatGeneral(): String
+        + isCollector(): boolean
+    }
+}
+
+' ==================== MODELS - EMPLOYE ====================
+package "Models - Employé" <<Rectangle>> LIGHTPINK {
+    abstract class Employe {
+        + firstName: String
+        + lastName: String
+        --
+        + Employe(firstName, lastName)
+    }
+
+    class Gerant {
+        + Gerant(firstName, lastName)
+    }
+
+    class Vendeur {
+        + Vendeur(firstName, lastName)
+    }
+
+    class Preparateur {
+        + Preparateur(firstName, lastName)
+    }
+}
+
+' ==================== MODELS - BUSINESS ====================
+package "Models - Business" <<Rectangle>> LIGHTYELLOW {
+    class Magasin {
+        - nom: String
+        - adresse: String
+        - employes: List<Employe>
+        - clients: List<Client>
+        - catalogue: List<Jeu>
+        - paniers: List<Panier>
+        - chiffreAffaires: double
+        - codesPromo: List<CodePromo>
+        --
+        + Magasin(nom, adresse)
+        + ajouterJeu(Jeu): void
+        + trouverCodePromo(String): CodePromo
+        + ajouterCodePromo(CodePromo): void
+        + getNom(): String
+        + getAdresse(): String
+        + getEmployes(): List<Employe>
+        + getClients(): List<Client>
+        + getCatalogue(): List<Jeu>
+        + getPaniers(): List<Panier>
+        + getChiffreAffaires(): double
+        + setChiffreAffaires(double): void
+        + getCodesPromo(): List<CodePromo>
+    }
+
+    class Client {
+        - nom: String
+        - prenom: String
+        - panier: Panier
+        - commande: Commande
+        - solde: double
+        - carteFidelite: boolean
+        - pointsFidelite: double
+        --
+        + Client(nom, prenom)
+        + Client(nom, prenom, solde)
+        + getFullName(): String
+        + getNom(): String
+        + getPrenom(): String
+        + getPanier(): Panier
+        + getCommande(): Commande
+        + getSolde(): double
+        + setSolde(double): void
+        + isCarteFidelite(): boolean
+        + setCarteFidelite(boolean): void
+        + getPointsFidelite(): double
+        + setPointsFidelite(double): void
+    }
+
+    class Panier {
+        - client: Client
+        - articles: Map<Jeu, Integer>
+        - paye: boolean
+        - codePromoApplique: CodePromo
+        --
+        + Panier(client)
+        + ajouterJeu(Jeu, int): void
+        + getTotal(): double
+        + getTotalSansPromo(): double
+        + appliquerCodePromo(CodePromo): void
+        + retirerCodePromo(): void
+        + nettoyerPanier(): void
+        + getClient(): Client
+        + getArticles(): Map<Jeu, Integer>
+        + isPaye(): boolean
+        + setPaye(boolean): void
+        + getCodePromoApplique(): CodePromo
+    }
+
+    class Commande {
+        - commandes: List<DetailCommande>
+        --
+        + Commande()
+        + addCommande(List<Jeu>): void
+        + getCommandes(): List<DetailCommande>
+    }
+
+    class "Commande.DetailCommande" as DetailCommande {
+        - jeux: List<Jeu>
+        - date: LocalDateTime
+        - statut: String
+        - montant: double
+        --
+        + DetailCommande(jeux, montant)
+        + getJeux(): List<Jeu>
+        + getDate(): LocalDateTime
+        + getStatut(): String
+        + setStatut(String): void
+        + getMontant(): double
+    }
+
+    class CodePromo {
+        - code: String
+        - reduction: double
+        - dateExpiration: LocalDate
+        - actif: boolean
+        - utilisationsMax: int
+        - utilisationsRestantes: int
+        --
+        + CodePromo(code, reduction)
+        + CodePromo(code, reduction, dateExpiration)
+        + CodePromo(code, reduction, dateExpiration, utilisationsMax)
+        + estValide(): boolean
+        + utiliser(): void
+        + getCode(): String
+        + getReduction(): double
+        + getDateExpiration(): LocalDate
+        + isActif(): boolean
+        + setActif(boolean): void
+        + getUtilisationsRestantes(): int
+    }
+}
+
+' ==================== CONTROLLERS ====================
+package "Controllers" <<Rectangle>> LIGHTBLUE {
+    class MainApp {
+        {static} - magasin: Magasin
+        {static} - primaryStage: Stage
+        --
+        + start(Stage): void
+        {static} + getMagasin(): Magasin
+        {static} + changerVue(String): void
+        {static} + getPrimaryStage(): Stage
+        {static} + main(String[]): void
+    }
+
+    class SelectRoleController {
+        + onRoleClientButtonClick(): void
+        + onRoleEmployeButtonClick(): void
+    }
+
+    class ClientController {
+        - comboClients: ComboBox<Client>
+        - lblClientBalance: Label
+        - lblStoreName: Label
+        - centerPane: StackPane
+        - spinnerQuantite: Spinner<Integer>
+        - client: Client
+        --
+        + initialize(): void
+        + setClient(Client): void
+        + chargerVue(String): void
+        + onArticlesButtonClick(): void
+        + onPanierButtonClick(): void
+        + onInfosButtonClick(): void
+        + onFideliteButtonClick(): void
+        + onCommandesButtonClick(): void
+        + onPromotionsButtonClick(): void
+        + onNouveautesButtonClick(): void
+    }
+
+    class EmployeController {
+        - comboRole: ComboBox<String>
+        - lblStoreName: Label
+        - lblEmployeeName: Label
+        - lblEmployeRole: Label
+        - centerPane: StackPane
+        - menuVendeur: VBox
+        - menuPreparateur: VBox
+        - menuGerant: VBox
+        - employe: Employe
+        --
+        + initialize(): void
+        + setEmploye(Employe): void
+        + chargerVue(String): void
+        + onVenteButtonClick(): void
+        + onStockButtonClick(): void
+        + onAjouterJeuButtonClick(): void
+        + onBeneficesButtonClick(): void
+    }
+}
+
+' ==================== UTILITY ====================
+package "Utility" <<Rectangle>> LIGHTGRAY {
+    class DonneesTest {
+        {static} + Initialiser(Magasin): void
+    }
+}
+
+' ==================== RELATIONSHIPS - INHERITANCE ====================
+
+' Jeu hierarchy
+Jeu ..|> Promotion
+JeuPC --|> Jeu
+JeuConsole --|> Jeu
+JeuRetro --|> Jeu
+
+' Employe hierarchy
+Gerant --|> Employe
+Vendeur --|> Employe
+Preparateur --|> Employe
+
+' Inner class
+Commande +-- DetailCommande
+
+' ==================== RELATIONSHIPS - COMPOSITION/AGGREGATION ====================
+
+' Magasin relationships
+Magasin "1" *-- "0..*" Employe : contient
+Magasin "1" *-- "0..*" Client : contient
+Magasin "1" *-- "0..*" Jeu : catalogue
+Magasin "1" *-- "0..*" Panier : gère
+Magasin "1" *-- "0..*" CodePromo : contient
+
+' Client relationships
+Client "1" *-- "1" Panier : possède
+Client "1" *-- "1" Commande : possède
+
+' Panier relationships
+Panier "1" o-- "0..*" Jeu : contient
+Panier "1" o-- "0..1" CodePromo : applique
+
+' Commande relationships
+Commande "1" *-- "0..*" DetailCommande : contient
+DetailCommande "1" o-- "0..*" Jeu : contient
+
+' Jeu uses enums
+Jeu --> Genre : utilise
+Jeu --> Plateforme : utilise
+
+' ==================== RELATIONSHIPS - DEPENDENCIES ====================
+
+MainApp ..> Magasin : gère
+MainApp ..> DonneesTest : initialise
+DonneesTest ..> Magasin : initialise
+
+ClientController ..> Client : gère
+EmployeController ..> Employe : gère
+
+@enduml

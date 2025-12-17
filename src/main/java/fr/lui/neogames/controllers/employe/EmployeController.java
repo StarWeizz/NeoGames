@@ -1,6 +1,11 @@
 package fr.lui.neogames.controllers.employe;
 
 import fr.lui.neogames.MainApp;
+import fr.lui.neogames.controllers.employe.gerant.BeneficesController;
+import fr.lui.neogames.controllers.employe.preparateur.AjouterJeuController;
+import fr.lui.neogames.controllers.employe.preparateur.StockController;
+import fr.lui.neogames.controllers.employe.vendeur.ClientsController;
+import fr.lui.neogames.controllers.employe.vendeur.VenteController;
 import fr.lui.neogames.models.employe.Employe;
 import fr.lui.neogames.models.employe.Gerant;
 import fr.lui.neogames.models.employe.Preparateur;
@@ -107,34 +112,36 @@ public class EmployeController {
     // ===== Actions Vendeur =====
     @FXML
     private void showVente() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/vente-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/vendeur/vente-view.fxml");
     }
 
     @FXML
     private void showClients() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/clients-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/vendeur/clients-view.fxml");
     }
+
+
 
     // ===== Actions Préparateur =====
     @FXML
     private void showStock() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/stock-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/preparateur/stock-view.fxml");
     }
 
     @FXML
     private void showAjouterJeu() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/ajouter-jeu-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/preparateur/ajouter-jeu-view.fxml");
     }
 
     // ===== Actions Gérant =====
     @FXML
     private void showBenefices() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/benefices-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/gerant/benefices-view.fxml");
     }
 
     @FXML
     private void showStatistiques() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/statistiques-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/gerant/statistiques-view.fxml");
     }
 
     @FXML
@@ -159,6 +166,8 @@ public class EmployeController {
                     ((AjouterJeuController) controller).setEmployeController(this);
                 } else if (controller instanceof BeneficesController) {
                     ((BeneficesController) controller).setEmployeController(this);
+                } else if (controller instanceof ClientsController) {
+                    ((ClientsController) controller).setEmployeController(this);
                 }
             }
 

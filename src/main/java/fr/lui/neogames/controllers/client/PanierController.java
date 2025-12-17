@@ -13,6 +13,8 @@ import java.util.Map;
 
 public class PanierController {
 
+    private ClientController clientController;
+
     @FXML
     private TableView<Map.Entry<Jeu, Integer>> tablePanier;
     @FXML
@@ -35,6 +37,10 @@ public class PanierController {
     private Button btnPayer;
 
     private Client client;
+
+    public void setClientController(ClientController clientController) {
+        this.clientController = clientController;
+    }
 
     @FXML
     public void initialize() {
@@ -156,6 +162,11 @@ public class PanierController {
 
                 // Déduire le montant du solde
                 client.setSolde(client.getSolde() - totalFinal);
+
+                if (clientController != null) {
+                    clientController.lblClientBalance.setText(String.format("Solde : %.2f €", client.getSolde()));
+                }
+
                 client.getCommande().addCommande(jeuxCommandes);
 
                 // Déduire les points de fidélité utilisés

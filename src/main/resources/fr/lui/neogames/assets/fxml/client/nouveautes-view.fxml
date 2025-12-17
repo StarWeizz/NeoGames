@@ -22,6 +22,7 @@
             <TableColumn fx:id="colPlateforme" text="Plateforme" prefWidth="100" />
             <TableColumn fx:id="colGenre" text="Genre" prefWidth="100" />
             <TableColumn fx:id="colPrix" text="Prix" prefWidth="100" />
+            <TableColumn fx:id="colPromotion" text="En Promotion" prefWidth="100" />
         </columns>
     </TableView>
 
