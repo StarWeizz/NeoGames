@@ -43,7 +43,7 @@ public class CodesPromoController {
 
         colReduction.setCellValueFactory(cellData -> {
             CodePromo codePromo = cellData.getValue();
-            return new SimpleStringProperty(String.format("-%f", codePromo.getReduction()));
+            return new SimpleStringProperty(String.format("-%.2f %%", codePromo.getReduction()));
         });
 
         colDateExpiration.setCellValueFactory(cellData -> {
@@ -68,12 +68,26 @@ public class CodesPromoController {
 
         colMaxUtilisation.setCellValueFactory(cellData -> {
             CodePromo codePromo = cellData.getValue();
-            return new SimpleStringProperty(String.valueOf(codePromo.getUtilisationsMax()));
+            int maxUse = codePromo.getUtilisationsMax();
+            String text;
+            if (maxUse < 0) {
+                text = "Infini";
+            } else {
+                text = String.valueOf(maxUse);
+            }
+            return new SimpleStringProperty(text);
         });
 
         colUtilisationsRestantes.setCellValueFactory(cellData -> {
             CodePromo codePromo = cellData.getValue();
-            return new SimpleStringProperty(String.valueOf(codePromo.getUtilisationsRestantes()));
+            int remUse = codePromo.getUtilisationsRestantes();
+            String text;
+            if (remUse < 0) {
+                text = "Infini";
+            } else {
+                text = String.valueOf(remUse);
+            }
+            return new SimpleStringProperty(text);
         });
 
         tableCodesPromo.setItems(FXCollections.observableArrayList(MainApp.getMagasin().getCodesPromo()));
