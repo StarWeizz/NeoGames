@@ -2,6 +2,7 @@ package fr.lui.neogames.controllers.employe;
 
 import fr.lui.neogames.MainApp;
 import fr.lui.neogames.controllers.employe.gerant.BeneficesController;
+import fr.lui.neogames.controllers.employe.gerant.CodesPromoController;
 import fr.lui.neogames.controllers.employe.preparateur.AjouterJeuController;
 import fr.lui.neogames.controllers.employe.preparateur.StockController;
 import fr.lui.neogames.controllers.employe.vendeur.ClientsController;
@@ -12,7 +13,6 @@ import fr.lui.neogames.models.employe.Preparateur;
 import fr.lui.neogames.models.employe.Vendeur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -117,7 +117,7 @@ public class EmployeController {
 
     @FXML
     private void showClients() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/vendeur/clients-view.fxml");
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/clients-view.fxml");
     }
 
 
@@ -140,8 +140,8 @@ public class EmployeController {
     }
 
     @FXML
-    private void showStatistiques() {
-        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/gerant/statistiques-view.fxml");
+    private void showCodesPromo() {
+        chargerVueDansCenter("/fr/lui/neogames/assets/fxml/employe/gerant/codes-promo-view.fxml");
     }
 
     @FXML
@@ -168,6 +168,8 @@ public class EmployeController {
                     ((BeneficesController) controller).setEmployeController(this);
                 } else if (controller instanceof ClientsController) {
                     ((ClientsController) controller).setEmployeController(this);
+                } else if (controller instanceof CodesPromoController) {
+                    ((CodesPromoController) controller).setEmployeController(this);
                 }
             }
 

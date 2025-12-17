@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="fr.lui.neogames.controllers.employe.gerant.CodesPromoController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Titre -->
+    <Label text="👥 Liste des codes promo" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- Info -->
+    <Label text="Consultez la liste de tous les codes promo"
+           style="-fx-font-size: 12px; -fx-text-fill: #666;" />
+
+    <!-- TableView des codes promo -->
+    <TableView fx:id="tableCodesPromo" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colCode" text="Code" prefWidth="150" />
+            <TableColumn fx:id="colReduction" text="Réduction" prefWidth="120" />
+            <TableColumn fx:id="colDateExpiration" text="Date expiration" prefWidth="120" />
+            <TableColumn fx:id="colActif" text="Actif" prefWidth="80" />
+            <TableColumn fx:id="colMaxUtilisation" text="Utilisations maximum" prefWidth="150" />
+            <TableColumn fx:id="colUtilisationsRestantes" text="Utilisations restantes" prefWidth="150" />
+        </columns>
+    </TableView>
+
+</VBox>

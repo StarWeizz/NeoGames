@@ -1,6 +1,8 @@
 package fr.lui.neogames.controllers.client;
 
+import fr.lui.neogames.MainApp;
 import fr.lui.neogames.models.Client;
+import fr.lui.neogames.models.Magasin;
 import fr.lui.neogames.models.jeu.Jeu;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -168,6 +170,8 @@ public class PanierController {
                 }
 
                 client.getCommande().addCommande(jeuxCommandes);
+                Magasin magasin = MainApp.getMagasin();
+                magasin.setChiffreAffaires(magasin.getChiffreAffaires() + totalFinal);
 
                 // Déduire les points de fidélité utilisés
                 if (reductionFidelite > 0) {

@@ -3,6 +3,7 @@ package fr.lui.neogames.controllers.employe.gerant;
 import fr.lui.neogames.MainApp;
 import fr.lui.neogames.controllers.employe.EmployeController;
 import fr.lui.neogames.models.Client;
+import fr.lui.neogames.models.Commande;
 import fr.lui.neogames.models.Magasin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -49,10 +50,13 @@ public class BeneficesController {
                 .count();
         lblCodesPromo.setText(String.valueOf(codesActifs));
 
-        // Calculer nombre de ventes (basé sur les commandes des clients de test)
-        // Pour l'instant on met des valeurs par défaut
-        int nombreVentes = 0;
-        double totalVentes = chiffreAffaires;
+        int nombreVentes = (int) magasin.getClients().stream()
+                .flatMap(client -> client.getCommande().getCommandes().stream())
+                .count();
+        double totalVentes = magasin.getClients().stream()
+                .flatMap(client -> client.getCommande().getCommandes().stream())
+                .mapToDouble(Commande.DetailCommande::getMontant)
+                .sum();
 
         lblNombreVentes.setText(String.valueOf(nombreVentes));
 

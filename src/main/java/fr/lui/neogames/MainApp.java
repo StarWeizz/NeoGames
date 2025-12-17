@@ -46,7 +46,6 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
     }
 
-    // Getters statiques
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

@@ -44,7 +44,11 @@
             <VBox fx:id="menuGerant" spacing="5" visible="false" managed="false">
                 <Label text="👔 Gérant" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
                 <Button fx:id="btnBenefices" maxWidth="Infinity" onAction="#showBenefices" text="Bénéfices" />
-                <Button fx:id="btnStatistiques" maxWidth="Infinity" onAction="#showStatistiques" text="Statistiques" />
+                <Button fx:id="btnCodesPromo" maxWidth="Infinity" onAction="#showCodesPromo" text="Codes promo" />
+                <Button fx:id="btnClientsGerant" maxWidth="Infinity" onAction="#showClients" text="Clients" />
+                <Button fx:id="btnStockGerant" maxWidth="Infinity" onAction="#showStock" text="Gérer le stock" />
+                <Button fx:id="btnVenteGerant" maxWidth="Infinity" onAction="#showVente" text="Vendre" />
+                <Button fx:id="btnAjouterJeuGerant" maxWidth="Infinity" onAction="#showAjouterJeu" text="Ajouter un jeu" />
                 <Separator />
             </VBox>
 
