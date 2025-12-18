@@ -29,11 +29,10 @@ public class Magasin {
     }
 
     private void initialiserCodesPromo() {
-        // Codes promo par défaut
         codesPromo.add(new CodePromo("BIENVENUE", 10));
         codesPromo.add(new CodePromo("PROMO20", 20));
         codesPromo.add(new CodePromo("NOEL2024", 25, java.time.LocalDate.of(2024, 12, 31)));
-        codesPromo.add(new CodePromo("VIP50", 50, 5)); // Code VIP avec 5 utilisations max
+        codesPromo.add(new CodePromo("VIP50", 50, 5));
     }
 
     public String getNom() {
@@ -72,7 +71,6 @@ public class Magasin {
         return catalogue;
     }
 
-    // Gestion des codes promo
     public CodePromo trouverCodePromo(String code) {
         return codesPromo.stream()
                 .filter(cp -> cp.getCode().equalsIgnoreCase(code))

@@ -2,7 +2,6 @@ package fr.lui.neogames.controllers.employe.gerant;
 
 import fr.lui.neogames.MainApp;
 import fr.lui.neogames.controllers.employe.EmployeController;
-import fr.lui.neogames.models.Client;
 import fr.lui.neogames.models.Commande;
 import fr.lui.neogames.models.Magasin;
 import javafx.fxml.FXML;

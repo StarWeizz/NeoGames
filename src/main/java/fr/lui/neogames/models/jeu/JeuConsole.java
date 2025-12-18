@@ -7,7 +7,7 @@ public class JeuConsole extends Jeu {
 
     private boolean modeMultijoueurLocal;
     private boolean modeMultijoueurEnLigne;
-    private boolean abonnementRequis; // PlayStation Plus, Xbox Live, etc.
+    private boolean abonnementRequis;
     private int nombreJoueursMax;
 
     public JeuConsole(String titre, String editeur, double prix, Genre genre, Plateforme plateforme,
