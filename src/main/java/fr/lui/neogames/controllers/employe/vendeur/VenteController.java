@@ -44,7 +44,6 @@ public class VenteController {
     private EmployeController employeController;
     private Client clientSelectionne;
 
-    // Liste de clients de test
     private ObservableList<Client> clients = FXCollections.observableArrayList(
             new Client("John", "Doe"),
             new Client("Jane", "Smith"),
@@ -53,7 +52,6 @@ public class VenteController {
 
     @FXML
     public void initialize() {
-        // Configurer le combo des clients
         comboClients.setItems(clients);
         comboClients.setCellFactory(cb -> new ListCell<>() {
             @Override

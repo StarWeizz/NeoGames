@@ -39,7 +39,6 @@ public class Panier {
                 .mapToDouble(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
 
-        // Appliquer le code promo si présent
         if (codePromoApplique != null && codePromoApplique.estValide()) {
             total = total * (1 - codePromoApplique.getReduction() / 100);
         }
